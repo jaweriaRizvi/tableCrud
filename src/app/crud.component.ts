@@ -36,16 +36,12 @@ export class CrudComponent {
   onSubmit(form: any) {
     if (form.valid) {
       if (this.isEdit && this.currentIndex !== null) {
-        // Update existing user
         this.crudService.updateUser(this.user).subscribe((updatedUser: User) => {
-          // Find the updated user in the users list and update it
           this.users[this.currentIndex!] = { ...updatedUser };
           this.resetForm();
         });
       } else {
-        // Add new user
         this.crudService.addUser(this.user).subscribe((newUser: User) => {
-          // Add the newly created user to the users list
           this.users.push(newUser);
           this.resetForm();
         });
@@ -56,7 +52,6 @@ export class CrudComponent {
   onDelete(index: number) {
     const userId = this.users[index].id;
     
-    // Confirmation dialog before deleting
     const confirmation = window.confirm('Are you sure you want to delete this entry?');
     if (confirmation) {
       this.crudService.deleteUser(userId!).subscribe(() => {
