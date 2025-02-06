@@ -1,0 +1,40 @@
+.card {
+  margin: 2rem;
+}
+.form-card {
+  width: 50%;
+  border-right: 0.1px solid rgba(183, 183, 183, 0.5);
+  margin-right: 2rem;
+}
+.table-card {
+  width: 100%;
+}
+h1,
+h2,
+label {
+  color: rgb(52, 12, 90);
+}
+label {
+  font-weight: bold;
+}
+input {
+  width: 100%;
+  border-radius: 5px;
+  padding: 0.5rem;
+}
+h2 {
+  font-weight: 700;
+}
+.btn {
+  border-radius: 5px;
+}
+.fa-trash-can {
+  color: rgb(234, 66, 66);
+}
+.fa-pen-to-square {
+  color: rgb(92, 51, 22);
+}
+thead,
+th {
+  color: rgb(60, 18, 99);
+}

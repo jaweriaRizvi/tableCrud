@@ -1,0 +1,104 @@
+<div class="card">
+  <h1 class="fw-bold text-center"><u>Manage Form-Entries</u></h1>
+  <div class="main-flex d-flex flex-row p-5">
+    <div class="table-card p-2">
+      <h2>Form-Entries</h2>
+
+      <table class="table">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Delete</th>
+            <th>Edit</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let user of users; let i = index">
+            <td>{{ i + 1 }}</td>
+            <td>{{ user.name }}</td>
+            <td>{{ user.email }}</td>
+            <td>
+              <button class="btn btn-danger" (click)="onDelete(i)">
+                Delete
+              </button>
+            </td>
+            <td>
+              <button
+                class="btn btn-primary"
+                (click)="onEdit(i)"
+                data-bs-toggle="modal"
+                data-bs-target="#userModal"
+              >
+                Edit
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <button
+    class="btn btn-primary mb-5 p-3 mx-auto d-block"
+    data-bs-toggle="modal"
+    data-bs-target="#userModal"
+    style="width: 30%"
+  >
+    Fill Form
+  </button>
+</div>
+
+<!-- Modal for Adding/Editing Users -->
+<div
+  class="modal fade"
+  id="userModal"
+  tabindex="-1"
+  aria-labelledby="userModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="userModalLabel">
+          {{ isEdit ? "Update Entry" : "Add Entry" }}
+        </h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <form #userForm="ngForm" (ngSubmit)="onSubmit(userForm)">
+          <div class="mb-3">
+            <label for="nameInput" class="form-label">Name</label>
+            <input
+              [(ngModel)]="user.name"
+              name="name"
+              type="text"
+              class="form-control"
+              id="nameInput"
+              required
+            />
+          </div>
+          <div class="mb-3">
+            <label for="emailInput" class="form-label">Email</label>
+            <input
+              [(ngModel)]="user.email"
+              name="email"
+              type="email"
+              class="form-control"
+              id="emailInput"
+              required
+            />
+          </div>
+          <button type="submit" class="btn btn-primary">
+            {{ isEdit ? "Update" : "Add" }}
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
